@@ -13,7 +13,7 @@ def contact_us(request):
 
     for contact in contact_messages:
         results.append(
-            f'ID: {contact.id}, Email from: {contact.email_from},' 
+            f'ID: {contact.id}, Email from: {contact.email_from},'
             f'Subject: {contact.subject}, Message: {contact.message}<br>'
         )
     return HttpResponse(str(results))
