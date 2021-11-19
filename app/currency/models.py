@@ -1,5 +1,3 @@
-#from os import spawnle
-
 from django.db import models
 
 
@@ -17,4 +15,4 @@ class ContactUs(models.Model):
     message = models.TextField(max_length=1500)
 
 
-# УДАЛИТЬ ЭТО ВСЁ ПОЗЖЕ!
+# Чисто коммент, чтоб Тревис заработал. Так как сначала сделал коммит не в мэйн.
