@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from currency.views import contact_us
-from currency.views import hello_world
+from currency.views import rate_list
 
 from django.contrib import admin
 from django.urls import path
@@ -22,6 +22,6 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello-world/', hello_world),
-    path('contact-us', contact_us)
+    path('contact-us', contact_us),
+    path('rate-list', rate_list)
 ]
