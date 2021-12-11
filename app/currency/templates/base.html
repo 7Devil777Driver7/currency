@@ -5,11 +5,7 @@
     <title>Currency - {% block title %}{% endblock title %}</title>
 <body>
 {% block nav %}
-<ul id="nav">
-    <li style='display: inline;'>{% block nav-rates%}<a href='/rate-list/'>Rates</a>{% endblock %}</li>
-    <li style='display: inline;'>{% block nav-sources %}<a href='/source-list/'>Sources</a>{% endblock %}</li>
-    <li style='display: inline;'>{% block nav-contact %}<a href='/contact-us/'>Contact Us</a>{% endblock %}</li>
-</ul>
+{% include 'navbar.html' %}
 {% endblock %}
 
 {% block content %}
