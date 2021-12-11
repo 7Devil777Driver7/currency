@@ -3,21 +3,21 @@
 {% block title %}Sources{% endblock title %}
 
 {% block content %}
-<a href='/source-list/create/'>Create Source</a>
+<a href="{% url 'currency:source-create' %}">>Create Source</a>
 <table>
     <tr>
       <th>ID</th>
       <th>URL</th>
       <th>Name</th>
     </tr>
-  
-    {% for source in sources %}
+    
+    {% for source in source_list %}
     <tr>
       <td>{{ source.id }}</td>
       <td>{{ source.source_url }}</td>
       <td>{{ source.name }}</td>
-      <td><a href='/source-list/update/{{source.id}}'>Edit</a></td>
-      <td><a href='/source-list/delete/{{source.id}}'>Delete</a></td>
+      <td><a href="{% url 'currency:source-update' source.id%}"></a>>Edit</a></td>
+      <td><a href="{% url 'currency:source-delete' source.id%}"></a>>Delete</a></td>
     </tr>
     
     {% endfor %}
