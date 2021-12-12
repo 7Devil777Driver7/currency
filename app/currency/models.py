@@ -13,9 +13,12 @@ class Rate(models.Model):
 
 
 class ContactUs(models.Model):
-    email_from = models.CharField(max_length=60)
+    created = models.DateTimeField(default=timezone.now)
+    name = models.CharField(max_length=255, default='User')
+    email_from = models.EmailField()
     subject = models.CharField(max_length=255)
-    message = models.TextField(max_length=1500)
+    message = models.TextField(max_length=1024)
+    raw_content = models.TextField(default=None)
 
 
 class Source(models.Model):
