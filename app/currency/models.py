@@ -30,3 +30,5 @@ class RequestResponseLog(models.Model):
     path = models.CharField(max_length=255)
     request_method = models.CharField(max_length=255, choices=mch.METHODS, default='GET')
     response_time = models.PositiveSmallIntegerField()
+
+# comment just for commit
