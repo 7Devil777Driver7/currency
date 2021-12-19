@@ -1,3 +1,5 @@
+from currency import model_choices as mch
+
 from django.db import models
 from django.utils import timezone
 
@@ -6,7 +8,7 @@ class Rate(models.Model):
     buy = models.DecimalField(max_digits=6, decimal_places=2)
     sale = models.DecimalField(max_digits=6, decimal_places=2)
     created = models.DateTimeField(default=timezone.now)
-    cur_type = models.CharField(max_length=3)
+    cur_type = models.PositiveSmallIntegerField(choices=mch.TYPE_CHOICES, default=mch.TYPE_USD)
     source = models.CharField(max_length=25, default='Unknown')
 
 
