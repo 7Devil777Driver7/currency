@@ -7,3 +7,8 @@ TYPE_CHOICES = [
     (TYPE_USD, 'Dollar'),
     (TYPE_EUR, 'Euro')
 ]
+
+METHODS = (
+    ('GET', 'GET'),
+    ('POST', 'POST'),
+)
