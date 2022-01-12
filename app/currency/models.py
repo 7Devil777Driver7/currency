@@ -13,11 +13,22 @@ class Rate(models.Model):
 
 
 class ContactUs(models.Model):
-    email_from = models.CharField(max_length=60)
+    created = models.DateTimeField(default=timezone.now)
+    name = models.CharField(max_length=255, default='User')
+    email_from = models.EmailField()
     subject = models.CharField(max_length=255)
-    message = models.TextField(max_length=1500)
+    message = models.TextField(max_length=1024)
+    raw_content = models.TextField(default='')
 
 
 class Source(models.Model):
     source_url = models.CharField(max_length=255)
     name = models.CharField(max_length=64)
+
+
+class RequestResponseLog(models.Model):
+    path = models.CharField(max_length=255)
+    request_method = models.CharField(max_length=255, choices=mch.METHODS, default='GET')
+    response_time = models.PositiveSmallIntegerField()
+
+# comment just for commit

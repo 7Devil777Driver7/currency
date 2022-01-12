@@ -1,6 +1,7 @@
 Django==3.2.7
 django-debug-toolbar
 django-extensions==3.1.5
+django-silk
 
 flake8
 flake8-builtins

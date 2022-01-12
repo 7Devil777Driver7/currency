@@ -3,9 +3,12 @@
 {% block title %}Contact Us{% endblock title %}
 
 {% block content %}
+<a href="{% url 'currency:contactus-create' %}">Create request</a>
 <table>
     <tr>
       <th>ID</th>
+      <th>Received</th>
+      <th>Name</th>
       <th>Email From</th>
       <th>Subject</th>
       <th>Message</th>
@@ -14,6 +17,8 @@
     {% for contact in object_list %}
     <tr>
       <td>{{ contact.id }}</td>
+      <td>{{ contact.created}}</td>
+      <td>{{ contact.name}}</td>
       <td>{{ contact.email_from }}</td>
       <td>{{ contact.subject }}</td>
       <td>{{ contact.message }}</td>
