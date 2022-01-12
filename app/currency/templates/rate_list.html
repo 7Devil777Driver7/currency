@@ -22,9 +22,13 @@
     <td>{{ rate.created }}</td>
     <td>{{ rate.get_cur_type_display }}</td>
     <td>{{ rate.source }}</td>
-    <td><a href="{% url 'currency:rate-update' rate.id%}">Edit</a></td>
-    <td><a href="{% url 'currency:rate-delete' rate.id%}">Delete</a></td>
+    <td><a href="{% url 'currency:rate-update' rate.pk %}">Edit</a></td>
+    <td><a href="{% url 'currency:rate-delete' rate.pk %}">Delete</a></td>
+    {% if user.is_authenticated %}
+      <td><a href="{% url 'currency:rate-details' rate.pk %}">Details</a></td>
+    {% endif %}
   </tr>
   {% endfor %}
+
 </table>
 {% endblock content %}
