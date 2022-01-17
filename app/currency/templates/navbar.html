@@ -3,4 +3,13 @@
     <li style='display: inline;'>{% block nav-rates%}<a href="{% url 'currency:rate-list' %}">Rates</a>{% endblock %}</li>
     <li style='display: inline;'>{% block nav-sources %}<a href="{% url 'currency:source-list' %}">Sources</a>{% endblock %}</li>
     <li style='display: inline;'>{% block nav-contact %}<a href="{% url 'currency:contact-us' %}">Contact Us</a>{% endblock %}</li>
+
+    {% if request.user.is_authenticated %}
+        <li style='display: inline;'>{% block nav-profile %}<a href="{% url 'currency:profile' request.user.id %}">My profile</a>{% endblock %}</li>
+        <li style='display: inline;'>{% block nav-logout %}<a href="{% url 'logout' %}">Log Out</a>{% endblock %}</li>
+    {% else %}
+        <li style='display: inline;'>{% block nav-signup %}<a href="#">Sign Up</a>{% endblock %}</li>
+        <li style='display: inline;'>{% block nav-login %}<a href="{% url 'login' %}">Log In</a>{% endblock %}</li>
+    {% endif %}
+
 </ul>
