@@ -1,3 +1,5 @@
+from accounts.models import User
+
 from currency.models import ContactUs, Rate, Source
 
 from django.contrib import admin
@@ -60,6 +62,11 @@ class ContactUsAdmin(admin.ModelAdmin):
         return False
 
 
+class UserAdmin(admin.ModelAdmin):
+    pass
+
+
 admin.site.register(Rate, RateAdmin)
 admin.site.register(Source, SourceAdmin)
 admin.site.register(ContactUs, ContactUsAdmin)
+admin.site.register(User, UserAdmin)
