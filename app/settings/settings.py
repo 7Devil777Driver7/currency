@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'django_extensions',
     'debug_toolbar',
 
+    'accounts',
     'currency',
+
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -161,3 +163,10 @@ DEGAULT_FROM_EMAIL = 'testtest1996x1996@gmail.com'
 LOGIN_REDIRECT_URL = reverse_lazy('index')
 LOGOUT_REDIRECT_URL = reverse_lazy('index')
 LOGIN_URL = reverse_lazy('login')
+AUTH_USER_MODEL = 'accounts.User'
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+DOMAIN = 'localhost:8000'  # TODO
+HTTP_SCHEMA = 'http'
