@@ -10,14 +10,14 @@ from django.views.generic import CreateView, DeleteView, DetailView, ListView, U
 
 
 class RateListView(ListView):
-    queryset = Rate.objects.all()
+    queryset = Rate.objects.all().select_related('source')
     template_name = 'rate_list.html'
 
 
 class RateCreateView(CreateView):
     form_class = RateForm
     success_url = reverse_lazy('currency:rate-list')
-    queryset = Rate.objects.all()
+    queryset = Rate.objects.all().select_related('source')
     template_name = 'rate_create.html'
 
 
