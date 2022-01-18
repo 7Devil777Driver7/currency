@@ -17,7 +17,7 @@ class Rate(models.Model):
     sale = models.DecimalField(max_digits=6, decimal_places=2)
     created = models.DateTimeField(default=timezone.now)
     cur_type = models.PositiveSmallIntegerField(choices=mch.TYPE_CHOICES, default=mch.TYPE_USD)
-    source = models.ForeignKey(Source, related_name = 'rate', on_delete=models.CASCADE)
+    source = models.ForeignKey(Source, related_name='rate', on_delete=models.CASCADE)
 
 
 class ContactUs(models.Model):

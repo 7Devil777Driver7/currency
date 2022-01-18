@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='source',
             name='name',
-            field=models.CharField(choices=[('PrivatBank', 'PrivatBank'), ('MonoBank', 'MonoBank')], default='PrivatBank', max_length=64),
+            field=models.CharField(choices=[('PrivatBank', 'PrivatBank'), ('MonoBank', 'MonoBank')], default='PrivatBank', max_length=64),  # noqa
         ),
     ]
