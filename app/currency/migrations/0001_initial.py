@@ -1,3 +1,4 @@
+import django.db.models.deletion
 import django.utils.timezone
 from django.db import migrations, models
 
@@ -23,17 +24,6 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='Rate',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('buy', models.DecimalField(decimal_places=2, max_digits=6)),
-                ('sale', models.DecimalField(decimal_places=2, max_digits=6)),
-                ('created', models.DateTimeField(default=django.utils.timezone.now)),
-                ('cur_type', models.PositiveSmallIntegerField(choices=[(1, 'Dollar'), (2, 'Euro')], default=1)),
-                ('source', models.CharField(default='Unknown', max_length=25)),
-            ],
-        ),
-        migrations.CreateModel(
             name='RequestResponseLog',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
@@ -48,6 +38,17 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('source_url', models.CharField(max_length=255)),
                 ('name', models.CharField(max_length=64)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Rate',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('buy', models.DecimalField(decimal_places=2, max_digits=6)),
+                ('sale', models.DecimalField(decimal_places=2, max_digits=6)),
+                ('created', models.DateTimeField(default=django.utils.timezone.now)),
+                ('cur_type', models.PositiveSmallIntegerField(choices=[(1, 'Dollar'), (2, 'Euro')], default=1)),
+                ('source', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='currency.source')),
             ],
         ),
     ]

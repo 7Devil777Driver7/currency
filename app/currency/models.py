@@ -4,12 +4,20 @@ from django.db import models
 from django.utils import timezone
 
 
+class Source(models.Model):
+    source_url = models.CharField(max_length=255)
+    name = models.CharField(max_length=64)
+
+    def __str__(self):
+        return self.name
+
+
 class Rate(models.Model):
     buy = models.DecimalField(max_digits=6, decimal_places=2)
     sale = models.DecimalField(max_digits=6, decimal_places=2)
     created = models.DateTimeField(default=timezone.now)
     cur_type = models.PositiveSmallIntegerField(choices=mch.TYPE_CHOICES, default=mch.TYPE_USD)
-    source = models.CharField(max_length=25, default='Unknown')
+    source = models.ForeignKey(Source, related_name='rate', on_delete=models.CASCADE)
 
 
 class ContactUs(models.Model):
@@ -19,11 +27,6 @@ class ContactUs(models.Model):
     subject = models.CharField(max_length=255)
     message = models.TextField(max_length=1024)
     raw_content = models.TextField(default='')
-
-
-class Source(models.Model):
-    source_url = models.CharField(max_length=255)
-    name = models.CharField(max_length=64)
 
 
 class RequestResponseLog(models.Model):
