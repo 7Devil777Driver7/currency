@@ -1,17 +1,23 @@
-
-<ul id="nav">
-    <li style='display: inline;'>{% block nav-rates%}<a href="{% url 'currency:rate-list' %}">Rates</a>{% endblock %}</li>
-    {% if request.user.is_superuser %}
-        <li style='display: inline;'>{% block nav-sources %}<a href="{% url 'currency:source-list' %}">Sources</a>{% endblock %}</li>
-    {% endif %}
-    <li style='display: inline;'>{% block nav-contact %}<a href="{% url 'currency:contact-us' %}">Contact Us</a>{% endblock %}</li>
-
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="{% url 'index' %}">Home</a>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link">{% block nav-rates%}<a class="nav-link active" href="{% url 'currency:rate-list' %}">Rates</a>{% endblock %}</li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">{% block nav-sources %}<a class="nav-link" href="{% url 'currency:source-list' %}">Sources</a>{% endblock %}</li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">{% block nav-contact %}<a class="nav-link" href="{% url 'currency:contact-us' %}">Contact Us</a>{% endblock %}</li>
+        </li>    
     {% if request.user.is_authenticated %}
-        <li style='display: inline;'>{% block nav-profile %}<a href="{% url 'currency:profile' request.user.id %}">My profile</a>{% endblock %}</li>
-        <li style='display: inline;'>{% block nav-logout %}<a href="{% url 'logout' %}">Log Out</a>{% endblock %}</li>
+        <li class="nav-item"><a class="nav-link"></a>{% block nav-profile %}<a class="nav-link" href="{% url 'accounts:profile' request.user.id %}">My profile</a>{% endblock %}</li>
+        <li class="nav-item"><a class="nav-link"></a>{% block nav-logout %}<a class="nav-link" href="{% url 'logout' %}">Log Out</a>{% endblock %}</li>
     {% else %}
-        <li style='display: inline;'>{% block nav-signup %}<a href="{% url 'accounts:signup' %}">Sign Up</a>{% endblock %}</li>
-        <li style='display: inline;'>{% block nav-login %}<a href="{% url 'login' %}">Log In</a>{% endblock %}</li>
+        <li class="nav-item"><a class="nav-link"></a>{% block nav-signup %}<a class="nav-link" href="{% url 'accounts:signup' %}">Sign Up</a>{% endblock %}</li>
+        <li class="nav-item"><a class="nav-link">{% block nav-login %}<a class="nav-link" href="{% url 'login' %}">Log In</a>{% endblock %}</li>
     {% endif %}
-
-</ul>
+      </ul>
+    </div>  
+  </nav>

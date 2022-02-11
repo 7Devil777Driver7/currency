@@ -1,0 +1,91 @@
+<!-- Footer -->
+<footer class="main-footer widgets-dark typo-light fixed-bottom">
+
+    <!-- Footer Links -->
+    <div class="container-fluid col-lg-12 text-center text-md-left bg-dark text-white">
+  
+      <!-- Footer links -->
+      <div class="row text-md-center mt-3 pb-3">
+  
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-4">
+          <h6 class="text-uppercase text-md-center mb-4 font-weight-bold">Company name</h6>
+          <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
+            consectetur
+            adipisicing elit.</p>
+        </div>
+
+        <!-- Grid column -->
+  
+        <hr class="w-100 clearfix d-md-none">
+  
+        <!-- Grid column -->
+        <div class="col-12 col-md-4 col-lg-4 col-xl-4 mx-auto mt-4">
+          <h6 class="text-uppercase mb-4 font-weight-bold">Navigation</h6>
+          <p>
+            <a href="{% url 'currency:rate-list' %}">Rates</a>
+          </p>
+          <p>
+            <a href="{% url 'currency:source-list' %}">Sources</a>
+          </p>
+          <p>
+            <a href="{% url 'currency:contact-us' %}">Contact Us</a>
+          </p>
+          {% if request.user.is_authenticated %}
+          <p>
+            <a href="{% url 'accounts:profile' request.user.id %}">My Profile</a>
+          </p>
+          {% else %}
+          <p>
+            <a href="{% url 'accounts:signup' %}">Sign Up</a>
+          </p>
+          {% endif %}
+        </div>
+  
+        <!-- Grid column -->
+        <hr class="w-100 clearfix d-md-none">
+  
+        <!-- Grid column -->
+        <div class="col-12 col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
+          <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+          <p>
+            <i class="fas fa-home mr-3"></i> Dnipro, 49000, UA</p>
+          <p>
+            <i class="fas fa-envelope mr-3"></i> b@buin.com</p>
+          <p>
+            <i class="fas fa-phone mr-3"></i> + 937 99 92</p>
+        </div>
+        <!-- Grid column -->
+  
+      </div>
+      <!-- Footer links -->
+  
+      <hr>
+  
+      <!-- Grid row -->
+      <div class="row d-flex align-items-center">
+  
+        <!-- Grid column -->
+        <div class="col-12 col-md-12 col-lg-12">
+  
+          <!--Copyright-->
+          <p class="text-center text-md-center">© 2022 Copyright:
+            <button type="button" class="btn btn-dark"><a href="https://www.youtube.com/watch?v=PvtWt6DI3TI&ab_channel=GrigoryPivovarov/">
+              <strong> Vitalka.com</strong>
+            </a></button>
+          </p>
+  
+        </div>
+
+  
+        </div>
+        <!-- Grid column -->
+  
+      </div>
+      <!-- Grid row -->
+  
+    </div>
+    <!-- Footer Links -->
+  
+  </footer>
+  <!-- Footer -->

@@ -3,21 +3,34 @@
 {% block title %}Sources{% endblock title %}
 
 {% block content %}
-<a href="{% url 'currency:source-create' %}">Create Source</a>
-<table>
+<button type="button" class="btn btn-secondary btn-lg btn-block bg-dark col-12"><a class="text-light" href="{% url 'currency:source-create' %}">Create Source
+</a></button>
+<table class="table table-bordered table-striped">
     <tr>
       <th>ID</th>
       <th>URL</th>
+      <th>Icon</th>
       <th>Name</th>
+      <th colspan='2'>Actions</th>
     </tr>
     
     {% for source in source_list %}
     <tr>
-      <td>{{ source.id }}</td>
-      <td>{{ source.source_url }}</td>
-      <td>{{ source.name }}</td>
-      <td><a href="{% url 'currency:source-update' source.id%}">Edit</a></td>
-      <td><a href="{% url 'currency:source-delete' source.id%}">Delete</a></td>
+    <td scope="row">{{ source.id }}</td>
+    <td scope="row">{{ source.url }}</td>
+    <td scope="row">{{ source.avatar }}</td>
+    <td scope="row">{{ source.name }}</td>
+    <td scope="row">
+      <div class="dropdown container-fluid">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Actions
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="{% url 'currency:source-update' source.id%}">Edit</a>
+          <a class="dropdown-item" href="{% url 'currency:source-delete' source.id%}">Delete</a>
+        </div>
+      </div>
+      </td>
     </tr>
     {% endfor %}
 </table>

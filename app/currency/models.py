@@ -1,12 +1,24 @@
 from currency import model_choices as mch
 
 from django.db import models
+from django.templatetags.static import static
 from django.utils import timezone
+
+
+def upload_avatar(instance, filename):
+    return f'avatars/{instance.id}/{filename}'
 
 
 class Source(models.Model):
     source_url = models.CharField(max_length=255)
     name = models.CharField(max_length=64)
+    logo = models.FileField(upload_to=upload_avatar, default=None, null=True, blank=True)
+
+    @property
+    def source_logo(self):
+        if self.logo:
+            return self.logo.url
+        return static('images/money.jpg')
 
     def __str__(self):
         return self.name
