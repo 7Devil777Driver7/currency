@@ -2,7 +2,6 @@ from currency.forms import ContactUsForm, RateForm, SourceForm
 from currency.models import ContactUs, Rate, Source
 
 from django.conf import settings
-from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.mail import send_mail
 from django.urls import reverse_lazy
@@ -102,18 +101,3 @@ class SourceDeleteView(DeleteView):
     model = Source
     success_url = reverse_lazy('currency:source-list')
     template_name = 'source_delete.html'
-
-
-class ProfileView(LoginRequiredMixin, UpdateView):
-    queryset = get_user_model().objects.all()
-    template_name = 'profile.html'
-    success_url = reverse_lazy('index')
-    fields = (
-        'first_name',
-        'last_name'
-    )
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        queryset = queryset.filter(id=self.request.user.id)
-        return queryset
